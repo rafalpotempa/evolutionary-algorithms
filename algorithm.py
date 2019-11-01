@@ -1,14 +1,13 @@
 from helpers import *
+from random import choices
 
 # load data
 data = loadData()
-
 mu = len(data)
+
 # initial population N = 101
 population = initPopulation(mu)
-print(population)
-
-exit()
+print(population[0])
 
 # parents population N = 505
 parents = choices(population, k=mu*5)

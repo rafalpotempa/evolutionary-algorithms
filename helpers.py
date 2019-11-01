@@ -1,4 +1,4 @@
-from random import seed, uniform, choices, gauss
+from random import seed, uniform, gauss
 from math import exp
 
 seed(0)
@@ -26,3 +26,9 @@ def mutate(parents):
 			'sigma': [sigma * exp(tau1 * gauss(0, 1) * exp(tau2 * gauss(0, 1))) for sigma in parent['sigma']]
 		})
 	return offsprings
+
+def meanSquareError(Y0, Y):
+	return sum([(Y0[i] - y)**2 for i, y in enumerate(Y)]) / len(Y0)
+
+def fitness(population):
+	pass
