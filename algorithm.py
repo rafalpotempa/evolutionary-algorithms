@@ -7,11 +7,17 @@ mu = len(data)
 
 # initial population N = 101
 population = initPopulation(mu)
-print(population[0])
+previousError = 1e10
 
-# parents population N = 505
-parents = choices(population, k=mu*5)
-print(parents[0])
+for generation in range(150):
+	parents = choices(population, k=mu*5) # parents population N = 505
+	offsprings = mutate(parents) 
+	population = fitness(offsprings, data)
 
-offsprings = mutate(parents)
-print(offsprings[0])
+	error = min([pop['error'] for pop in population])
+	print(f"{generation:3}: {error:.3f}")
+	
+	if abs(error - previousError) < 1e-3:
+		break
+	previousError = error
+plotResults(data, population[0])
