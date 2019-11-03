@@ -20,4 +20,6 @@ for generation in range(150):
 	if abs(error - previousError) < 1e-3:
 		break
 	previousError = error
+
+print(population[0])
 plotResults(data, population[0])
