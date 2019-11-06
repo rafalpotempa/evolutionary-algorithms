@@ -23,10 +23,11 @@ def initPopulation(mu):
 def mutate(parents):
 	offsprings = []
 	for parent in parents:
+		r2 = gauss(0, 1)
 		offsprings.append({
 			'error': 0,
 			'x': 	 [x + gauss(0, parent['sigma'][i]) for i, x in enumerate(parent['x'])],
-			'sigma': [sigma * exp(tau1 * gauss(0, 1) * exp(tau2 * gauss(0, 1))) for sigma in parent['sigma']]
+			'sigma': [sigma * exp(tau1 * gauss(0, 1) * exp(tau2 * r2)) for sigma in parent['sigma']]
 		})
 	return offsprings
 
